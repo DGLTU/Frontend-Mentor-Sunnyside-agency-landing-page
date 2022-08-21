@@ -1,0 +1,82 @@
+@import 'basic';
+@import 'mediaqueries';
+
+.navbar{
+    padding: 2em 5%;
+    display: flex;
+    justify-content: space-between;
+    &__logo{
+        @extend %justify-align-center;
+        img{
+            display: block;
+        }
+    }
+    .menu{
+        color: $white;
+        font-size: 36px;
+        @extend %justify-align-center;
+        span{
+            @include big-desk{
+                display: none;
+            }
+            @include desk{
+                display: none;
+            }
+            @include tablet{
+                display: inline-block;
+            }
+        }
+    }
+    &__links{
+        @include tablet{
+            display: none;
+        }
+        ul{
+            @extend %justify-align-center;
+            display: grid;
+            grid-template-columns:repeat(4, max-content);
+            gap: 2em;
+            list-style-type: none;
+        }
+        a{
+            color: $white;
+        }
+        li.whiteFrame{
+            a{
+                padding: 0.5rem 1rem;
+                color: $veryDark;
+                font-family: 'Fraunces', serif;
+                text-transform: uppercase;
+                background-color: $white;
+                border-radius: 20px;
+                font-size: 14px;
+            }
+        }
+        
+    }
+}
+
+.hamburger{
+    display: grid;
+    padding: 2rem 2rem;
+    grid-template-columns: repeat(1, 100%) !important;
+    row-gap: 2rem;
+    position: absolute;
+    top: 80px;
+    right: 5%;
+    width: 30%;
+    background-color: #fff;
+    list-style-type: none;
+    li{
+        @extend %justify-align-center;
+    }
+    a{
+        color: $veryDarkGrayishBlue;
+        font-size: 18px;
+    }
+    @include mobile{
+        width: 100vw;
+        padding: 1rem 1rem;
+        left: 0;
+    }
+}

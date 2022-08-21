@@ -1,0 +1,306 @@
+@import 'color';
+@import 'fonts';
+@import 'navbar';
+@import 'mediaqueries';
+@import 'basic';
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-size: 18px;
+    font-family: 'Barlow', sans-serif;
+}
+h1,h2,h3,h4,h5{
+    font-family: 'Fraunces', serif;
+}
+a{
+    text-decoration: none;
+}
+@keyframes arrow {
+    0%{transform:translateY(-20px);}
+    100%{transform:translateY(0px);}
+
+}
+// header
+header{
+    height: 100vh;
+    background: url(../images/desktop/image-header.jpg);
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    & .hero {
+        h1{
+            margin-top: 5%;
+            font-size: 5em;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            font-weight: 900;
+            color: $white;
+            text-align: center;
+            @include desk{
+                margin-top: 15%;
+                font-size: 4em;
+            }
+            @include tablet{
+                margin-top: 15%;
+                font-size: 3em;
+            }
+        }
+        img{
+            display: block;
+            position: absolute;
+            bottom: 40%;
+            left:50%;
+            animation: arrow 1s alternate;
+            animation-iteration-count: infinite;
+            @include big-desk{
+                bottom:43%;
+            }
+        }
+    }
+}
+//features
+.features{
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    @include tablet{
+    grid-template-columns: repeat(1, 100%);
+
+    }
+    &__text{
+        padding: 0 20%;
+        place-self: center;
+        @include desk{
+            padding: 0% 20%;
+        }
+        @include tablet{
+            padding: 20% 20%;
+        }
+        h2{
+            font-size: 3em;
+            font-weight: 900;
+            @include desk{
+                font-size: 2em;
+            }
+            @include tablet{
+                font-size: 1.5em;
+            }
+        }
+        p{
+            margin-top: 2em;
+            color: $grayishBlue;
+            line-height: 2em;
+            @include desk{
+                margin-top: 1em;
+                font-size: 1em;
+                line-height: 1.5em;
+            }
+            @include tablet{
+                margin-top: 2em;
+                line-height: 1.5em;
+                font-size: 1em;
+            }
+        }
+        a{
+            display: inline-block;
+            margin-top: 2em;
+            letter-spacing: 1px;
+            text-decoration: none;
+            text-transform: uppercase;
+            color: $veryDark;
+            font-family: 'Fraunces', serif;
+            position: relative;
+            &:after{
+                content: '';
+                position: absolute;
+                width: 0;
+                height: 0;
+                bottom: 10%;
+                background-color: #ffd404;
+                transition: width .3s, left .3s;
+                z-index: -1;
+            }
+            &:hover:after{
+                width: 110%;
+                height: 5px;
+                left: -5%;
+            }
+            @include desk{
+                margin-top: 1em;
+                font-size: 1em;
+            }
+        }
+        &.standOut{
+            order: 1;
+            @include tablet{
+                order: 0;
+            }
+            a{
+                &:after{
+                    background-color: #ff6c6488;
+                }
+                @include desk{
+                    margin-top: 1em;
+                    font-size: 1em;
+                }
+            }
+        }
+    }
+    &__graphic__container{
+        position: relative;
+        order: 2;
+        .features__text{
+            padding: 0 20%;
+            position: absolute;
+            text-align: center;
+            top: 60%;
+            @include mobile{
+                top:60%;
+                padding: 0 5%;
+            }
+            h3{
+                font-weight: 900;
+                color: $veryDarkGrayishBlue;
+                font-size: 2em;
+                @include desk{
+                    font-size: 1.5em;
+                }
+                @include tablet{
+                    font-size: 1.5em;
+                }
+            }
+            p{
+                @include desk{
+                    font-size: 1em;
+                }
+                @include tablet{
+                    font-size: 1em;
+                    line-height: 1.5em;
+                }
+                @include mobile{
+                    margin-top: 1em;
+                }
+            }
+        }
+        .graphic img{
+            @include mobile{
+                height: 70vh;
+                background-position:center top;
+                object-fit: cover;
+            }
+        }
+    }
+    &__photography__container{
+        position: relative;
+        order: 3;
+        .features__text{
+            padding: 0 20%;
+            position: absolute;
+            text-align: center;
+            top: 60%;
+            @include mobile{
+                padding: 0 5%;
+                top:60%;
+            }
+            h3{
+                font-weight: 900;
+                color: $veryDarkGrayishBlue;
+                font-size: 2em;
+                @include desk{
+                    font-size: 1.5em;
+                }
+                @include tablet{
+                    font-size: 1.5em;
+                }
+            }
+            p{
+                @include desk{
+                    font-size: 1em;
+                }
+                @include tablet{
+                    font-size: 1em;
+                    line-height: 1.5em;
+                }
+                @include mobile{
+                    margin-top: 1em;
+                }
+            }
+            
+        }
+        .photography img{
+            @include mobile{
+                height: 70vh;
+                background-position:center top;
+                object-fit: cover;
+            }
+        }
+    }
+    &__img img{
+        @extend %img-style;
+    }
+}
+
+//testimonials
+.testimonials{
+    margin-top: 10em;
+    padding: 0 10%;
+    text-align: center;
+    &__cardList{
+        margin-top: 5em;
+        display: grid;
+        grid-template-columns: 30% 30% 30%;
+        gap: 5%;
+        @include mobile{
+            grid-template-columns: repeat(1, 100%);
+        }
+    }
+    &__card{
+        img{
+            width: 100px;
+            border-radius: 100px;
+        }
+        p{
+            margin-top: 5em;
+            color: $veryDarkGrayishBlue;
+            line-height: 1.5;
+        }
+        p.name{
+            font-family: 'Fraunces', serif;
+        }
+        p.career{
+            margin-top: 0.5em;
+            color: $darkGrayishBlue;
+        }
+    }
+}
+.gallery{
+    margin-top: 10em;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    img{
+        display: block;
+        max-width: 100%;
+    }
+}
+
+//footer
+footer{
+    padding-top: 5em;
+    background-color: #98d4c4;
+    text-align: center;
+    .navbar{
+        flex-direction: column;
+        &__links{
+            @include tablet{
+                display: block;
+            }
+        }
+        &__links ul{
+            grid-template-columns: repeat(3, max-content) !important;
+            justify-content: center;
+        }
+    }
+}
